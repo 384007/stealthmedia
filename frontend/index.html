@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StealthMedia</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">Stealth<span>Media</span></div>
+    <p class="tagline">智能图像 · 视频优化处理</p>
+  </header>
+
+  <!-- Main card -->
+  <main class="card">
+
+    <!-- Upload zone -->
+    <div class="upload-zone" id="uploadZone">
+      <input
+        class="upload-input"
+        type="file"
+        id="fileInput"
+        accept="image/jpeg,image/png,image/webp,video/mp4,video/quicktime"
+      />
+      <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/>
+      </svg>
+      <p class="upload-title">拖拽文件到这里，或点击上传</p>
+      <p class="upload-sub">图片 / 视频均可</p>
+      <p class="upload-types">支持 JPG · PNG · WEBP · MP4 · MOV</p>
+    </div>
+
+    <!-- File info -->
+    <div class="file-info" id="fileInfo">
+      <div class="file-icon" id="fileTypeIcon">
+        <!-- Icon injected by JS -->
+      </div>
+      <div class="file-details">
+        <div class="file-name" id="fileName"></div>
+        <div class="file-size" id="fileSize"></div>
+      </div>
+      <button class="file-remove" id="fileRemove" title="移除文件">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Process button -->
+    <button class="btn-process" id="btnProcess" disabled>开始处理</button>
+
+    <!-- Progress panel -->
+    <div class="progress-panel" id="progressPanel">
+      <div class="progress-header">
+        <span class="progress-label">处理进度</span>
+        <span class="progress-pct" id="progressPct">0%</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-bar active" id="progressBar"></div>
+      </div>
+      <p class="status-text" id="statusText">排队中...</p>
+    </div>
+
+    <!-- Result panel -->
+    <div class="result-panel" id="resultPanel">
+      <div class="result-icon" id="resultIcon">✅</div>
+      <div class="result-title" id="resultTitle">处理完成</div>
+      <p class="result-sub" id="resultSub">文件已准备好，点击下载</p>
+      <a class="btn-download" id="btnDownload" href="#" download>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/>
+        </svg>
+        下载文件
+      </a>
+      <button class="btn-reset" id="btnReset">处理另一个文件</button>
+    </div>
+
+    <!-- macOS tip -->
+    <div class="macos-tip" id="macosTip">
+      <strong>💡 macOS 用户提示</strong>
+      下载后如需清除系统来源记录，在终端执行：
+      <div class="tip-code">
+        <span id="tipCmd">xattr -c 文件名</span>
+        <button class="btn-copy" id="btnCopy">复制</button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    文件将在 24 小时后自动删除 &nbsp;·&nbsp; 最大支持图片 20MB / 视频 200MB
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
